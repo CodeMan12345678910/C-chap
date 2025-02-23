@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finaliser la commande</title>
+    <link rel="stylesheet" href="payement.css" />
+    <script src="payement.js" defer></script>
+  </head>
+  <body>
+
+  <form action="">  
+    <div class="container">
+      <h1>Finaliser la commande</h1>
+
+      <div class="checkout-grid">
+        <!-- Colonne de gauche - Livraison et Paiement -->
+        <div class="main-column">
+          <div class="card">
+            <div class="card-header">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <h2>Adresse de livraison</h2>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="firstName">Prénom</label>
+                <input type="text" id="firstName" placeholder="Entrez votre prenom" />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Nom</label>
+                <input type="text" id="lastName" placeholder="Entrez votre nom" />
+              </div>
+              <div class="form-group ">
+                <label for="lastName">Contact</label>
+                <input type="text" id="Contact" placeholder="Entrez votre contact" />
+              </div>
+              <div class="form-group ">
+                <label for="address">Adresse</label>
+                <input
+                  type="text"
+                  id="address"
+                  placeholder="Entrez votre adresse"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10 17h4V5H2v12h3" />
+                <path d="M20 17h2V5h-6v12h2" />
+                <path d="M14 8h.01" />
+                <path d="M14 12h.01" />
+                <path d="M6 8h.01" />
+                <path d="M6 12h.01" />
+                <path d="M2 9h20" />
+                <path d="M7 17v-3" />
+                <path d="M17 17v-3" />
+              </svg>
+              <h2>Mode de livraison</h2>
+            </div>
+            <div class="delivery-options">
+              <div class="form-group full-width">
+                <label for="destinationType">Zone de livraison</label>
+                <select id="destinationType" required>
+                  <option value="abidjan">Abidjan</option>
+                  <option value="other">Autre ville</option>
+                </select>
+              </div>
+
+              <div id="communeContainer" class="form-group full-width">
+                <label for="destinationCommune">Commune de destination</label>
+                <select id="destinationCommune">
+                  <option value="">Sélectionnez une commune</option>
+                </select>
+              </div>
+
+              <div
+                id="cityContainer"
+                class="form-group full-width"
+                style="display: none"
+              >
+                <label for="destinationCity">Ville de destination</label>
+                <select id="destinationCity">
+                  <option value="">Sélectionnez une ville</option>
+                </select>
+              </div>
+
+              <div class="delivery-info">
+                <p id="deliveryDetails" class="delivery-details"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-7h-2c0-1-.5-1.5-1-2h0V5z"
+                />
+              </svg>
+              <h2>Mode de paiement</h2>
+            </div>
+            <div class="payment-methods">
+              <div class="payment-selector">
+                <label class="payment-option">
+                  <input type="radio" name="paymentType" value="card" checked />
+                  <div class="option-content">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect width="20" height="14" x="2" y="5" rx="2" />
+                      <line x1="2" x2="22" y1="10" y2="10" />
+                    </svg>
+                    <span>Carte bancaire</span>
+                  </div>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="paymentType" value="mobile" />
+                  <div class="option-content">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                      <path d="M12 18h.01" />
+                    </svg>
+                    <span>Mobile Money</span>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Formulaire carte bancaire -->
+              <div id="cardPaymentForm" class="payment-form">
+                <div class="form-group full-width">
+                  <label for="cardNumber">Numéro de carte</label>
+                  <input
+                    type="text"
+                    id="cardNumber"
+                    placeholder="1234 5678 9012 3456"
+                  />
+                </div>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="expiry">Date d'expiration</label>
+                    <input type="text" id="expiry" placeholder="MM/AA" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input
+                      type="password"
+                      id="cvv"
+                      placeholder="123"
+                      maxlength="3"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Formulaire Mobile Money -->
+              <div
+                id="mobilePaymentForm"
+                class="payment-form"
+                style="display: none"
+              >
+                <div class="mobile-money-options">
+                  <label class="mobile-money-option">
+                    <input
+                      type="radio"
+                      name="mobileProvider"
+                      value="orange"
+                      checked
+                    />
+                    <div class="option-content">
+                      <div class="provider-logo orange">Orange Money</div>
+                    </div>
+                  </label>
+                  <label class="mobile-money-option">
+                    <input type="radio" name="mobileProvider" value="mtn" />
+                    <div class="option-content">
+                      <div class="provider-logo mtn">MTN Mobile Money</div>
+                    </div>
+                  </label>
+                  <label class="mobile-money-option">
+                    <input type="radio" name="mobileProvider" value="moov" />
+                    <div class="option-content">
+                      <div class="provider-logo moov">Moov Money</div>
+                    </div>
+                  </label>
+                  <label class="mobile-money-option">
+                    <input type="radio" name="mobileProvider" value="wave" />
+                    <div class="option-content">
+                      <div class="provider-logo wave">Wave</div>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-group full-width">
+                  <label for="phoneNumber">Numéro de téléphone</label>
+                  <input
+                    type="tel"
+                    id="phoneNumber"
+                    placeholder="07 XX XX XX XX"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne de droite - Résumé -->
+        <div class="summary-column">
+          <div class="card sticky">
+            <div class="card-header">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"
+                />
+                <path d="m7 16.5-4.74-2.85" />
+                <path d="m7 16.5 5-3" />
+                <path d="M7 16.5v5.17" />
+                <path
+                  d="M21.03 12.92A2 2 0 0 1 22 14.63v3.24a2 2 0 0 1-.97 1.71l-3 1.8a2 2 0 0 1-2.06 0L12 19v-5.5l5-3 4.03 2.42Z"
+                />
+                <path d="m17 16.5 4.74-2.85" />
+                <path d="m17 16.5-5-3" />
+                <path d="M17 16.5v5.17" />
+                <path
+                  d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"
+                />
+                <path d="M12 8 7.26 5.15" />
+                <path d="m12 8 4.74-2.85" />
+                <path d="M12 13.5V8" />
+              </svg>
+              <h2>Résumé de la commande</h2>
+            </div>
+            <div class="cart-items" id="cartItems">
+              <!-- Les articles seront injectés ici via JavaScript -->
+            </div>
+            <div class="separator"></div>
+            <div class="summary-details">
+              <div class="summary-line">
+                <span>Sous-total</span>
+                <span id="subtotal">0 FCFA</span>
+              </div>
+              <div class="summary-line">
+                <span>Frais de livraison</span>
+                <span id="deliveryFee">0 FCFA</span>
+              </div>
+              <div class="summary-line">
+                <span>TVA (18%)</span>
+                <span id="tax">0 FCFA</span>
+              </div>
+            </div>
+            <div class="separator"></div>
+            <div class="summary-total">
+              <span>Total</span>
+              <span id="total">0 FCFA</span>
+            </div>
+            <button class="confirm-button" type="submit">Confirmer la commande</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    <script src="payement.js"></script>
+  </body>
+</html>

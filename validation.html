@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paiement Sécurisé</title>
+    <script src="https://cdn.cinetpay.com/seamless/main.js"></script>
+    <style>
+        .sdk {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sdk">
+        <h1>Paiement sécurisé</h1>
+        <p>Montant à payer : <strong id="paymentAmount">Chargement...</strong></p>
+        <button onclick="checkout()">Payer maintenant</button>
+    </div>
+
+    <script>
+        function checkout() {
+            let totalAmount = parseFloat(localStorage.getItem("totalAmount") || "0");
+
+            if (totalAmount <= 0) {
+                alert("Erreur: Montant invalide !");
+                return;
+            }
+
+            CinetPay.setConfig({
+                apikey: '127268839267b3e2ea148840.86262658',
+                site_id: '105888133',
+                notify_url: 'http://mondomaine.com/notify/',
+                mode: 'PRODUCTION'
+            });
+
+            CinetPay.getCheckout({
+                transaction_id: Math.floor(Math.random() * 100000000).toString(),
+                amount: totalAmount, // Utiliser le montant correct
+                currency: 'XOF',
+                channels: 'ALL',
+                description: 'Paiement de la commande',
+                customer_name: "Joe",
+                customer_surname: "Down",
+                customer_email: "down@test.com",
+                customer_phone_number: "088767611",
+                customer_address: "BP 0024",
+                customer_city: "Antananarivo",
+                customer_country: "CI",
+                customer_state: "CI",
+                customer_zip_code: "06510"
+            });
+
+            CinetPay.waitResponse(function(data) {
+                if (data.status == "REFUSED") {
+                    alert("Votre paiement a échoué");
+                    window.location.reload();
+                } else if (data.status == "ACCEPTED") {
+                    alert("Votre paiement a été effectué avec succès");
+                    window.location.href = "confirmation.html"; 
+                }
+            });
+
+            CinetPay.onError(function(data) {
+                console.log(data);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let totalAmount = parseFloat(localStorage.getItem("totalAmount") || "0");
+            document.getElementById("paymentAmount").textContent = totalAmount > 0 ? totalAmount + " FCFA" : "Montant non disponible";
+        });
+    </script>
+
+</body>
+</html>

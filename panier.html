@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="panier.css" />
+    <script src="panier.js" defer></script>
+    <title>Mon Panier</title>
+  </head>
+  <body>
+    <div class="container">
+      
+      <h1 style="margin-bottom: 20px" >Mon Panier</h1>
+
+      <div class="cart-container">
+        <div class="cart-items">
+          <!-- Les items seront injectés ici via JavaScript -->
+        </div>
+
+        <div class="cart-summary">
+          <h2 class="summary-title">Résumé de la commande</h2>
+          <div class="summary-line">
+            <span>Sous-total</span>
+            <span id="subtotal">0.00 FCFA</span>
+          </div>
+
+          <div class="summary-line">
+            <span>TVA</span>
+            <span id="tax">0.00 FCFA</span>
+          </div>
+          <div class="summary-line total-line">
+            <span>Total</span>
+            <span id="total">0.00 FCFA</span>
+            
+          </div>
+          <button class="checkout-btn">Procéder au paiement</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+
+    <div class="footer-bottom">
+    <div class="container">
+        <p class="copyright">
+          Copyright &copy; <a href="#">C'chap</a> all rights reserved.
+        </p>
+        <p class="copyright">
+          Conçu et Développer by <a href="#">Kouadio Yves Armand</a>.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  </body>
+</html>
